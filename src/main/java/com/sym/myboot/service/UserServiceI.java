@@ -10,4 +10,11 @@ public interface  UserServiceI {
 
     User selectUserByUsername(String username);
 
+    User addUser(User user);
+
+    void delUserByName(String username);
+
+    void updateByUsername(String username);
+
+    User updateUser(User user);
 }

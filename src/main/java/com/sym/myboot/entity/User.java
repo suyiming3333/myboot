@@ -10,6 +10,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
+    //序列化、反序列化 默认构造函数
     public User(){
 
     }
@@ -52,4 +53,13 @@ public class User implements Serializable {
 
     @Column(nullable = false,unique = true)
     private int age;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

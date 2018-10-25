@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *RestController 会直接返回字符串 导致无法返回页面
@@ -40,7 +42,7 @@ public class TestController {
 //        User user = userRepository.findAllById(1);
         User user = userService.selectUserByUsername("ayue");
         //List<User> list =  userService.findAllUser(0,1);
-        return "hi myboot hhh";
+        return user.toString();
     }
 
     @RequestMapping("/list2")
@@ -48,6 +50,36 @@ public class TestController {
         model.addAttribute("hello","Hello, My Boot!");
         model.addAttribute("userList", userService.findAllUser(0,5));
         return "list";
+    }
+
+    @RequestMapping("/addUser")
+    public int addUser(){
+        User user = new User();
+        user.setAge(34);
+        user.setUsername("james harden");
+        userService.addUser(user);
+        return user.getId();
+    }
+
+    @RequestMapping("/delUser")
+    public void delUserByName(){
+        userService.delUserByName("ayue");
+    }
+
+    @RequestMapping("/updateUser")
+    public void updateUser(){
+        User user = new User(19,"dingdu",200);
+        userService.updateUser(user);
+    }
+
+    @RequestMapping("/uid")
+    String uid(HttpSession session) {
+        UUID uid = (UUID) session.getAttribute("uid");
+        if (uid == null) {
+            uid = UUID.randomUUID();
+        }
+        session.setAttribute("uid", uid);
+        return session.getId();
     }
 
 

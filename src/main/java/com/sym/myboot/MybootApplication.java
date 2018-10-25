@@ -7,7 +7,6 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @MapperScan("com.sym.myboot.mapper")
-@EnableCaching
 public class MybootApplication {
 
 	public static void main(String[] args) {
