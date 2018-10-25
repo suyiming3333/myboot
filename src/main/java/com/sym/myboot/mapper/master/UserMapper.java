@@ -1,4 +1,4 @@
-package com.sym.myboot.mapper;
+package com.sym.myboot.mapper.master;
 
 import com.sym.myboot.entity.User;
 

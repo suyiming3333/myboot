@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sym.myboot.mapper.UserMapper">
+<mapper namespace="com.sym.myboot.mapper.master.UserMapper">
     
     <resultMap id="BaseResultMap" type="com.sym.myboot.entity.User">
         <id column="id" property="id" jdbcType="INTEGER"/>
@@ -26,7 +26,7 @@
         where username = #{username}
     </select>
     
-    <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="id" >
+    <insert id="addUser" parameterType="com.sym.myboot.entity.User" useGeneratedKeys="true" keyProperty="id" >
         insert into user(
           username,
           age
@@ -40,7 +40,7 @@
         delete from user where username = #{username}
     </delete>
     
-    <update id="updateUser" parameterType="User">
+    <update id="updateUser" parameterType="com.sym.myboot.entity.User">
         update user
         <trim prefix="set" suffixOverrides=",">
             <if test="age!=null">age = #{age}</if>

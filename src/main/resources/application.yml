@@ -8,10 +8,16 @@ logging:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: root
-    password:
+    master:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      username: root
+      password:
+    slave:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      username: root
+      password:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
@@ -30,9 +36,9 @@ spring:
 
 
 
-mybatis:
-  mapper-locations: classpath:/mapper/*.xml
-  type-aliases-package: com.sym.myboot.entity
+#mybatis:
+#  mapper-locations: classpath:/mapper/**/*.xml
+#  type-aliases-package: com.sym.myboot.entity
 
 #pagehelper分页插件
 pagehelper:

@@ -40,7 +40,7 @@ public class TestController {
         String info = myProperty.getEmail().toString()+myProperty.getPhone().toString();
         System.out.println(info);
 //        User user = userRepository.findAllById(1);
-        User user = userService.selectUserByUsername("ayue");
+        User user = userService.selectUserByUsername("dingdu");
         //List<User> list =  userService.findAllUser(0,1);
         return user.toString();
     }
@@ -80,6 +80,11 @@ public class TestController {
         }
         session.setAttribute("uid", uid);
         return session.getId();
+    }
+
+    @RequestMapping("/getUserCnt")
+    public int getUserCnt(){
+        return userService.getUserCnt();
     }
 
 

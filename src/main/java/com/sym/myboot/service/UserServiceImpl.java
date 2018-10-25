@@ -2,7 +2,8 @@ package com.sym.myboot.service;
 
 import com.github.pagehelper.PageHelper;
 import com.sym.myboot.entity.User;
-import com.sym.myboot.mapper.UserMapper;
+import com.sym.myboot.mapper.master.UserMapper;
+import com.sym.myboot.mapper.slave.UserMapper2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -20,6 +21,9 @@ public class UserServiceImpl implements UserServiceI{
 
     @Autowired
     private UserMapper userMapper;//这里会报错，但是并不会影响
+
+    @Autowired
+    private UserMapper2 userMapper2;//这里会报错，但是并不会影响
 
     @Override
     public List<User> findAllUser(int pageNum, int pageSize) {
@@ -64,6 +68,10 @@ public class UserServiceImpl implements UserServiceI{
         System.out.println("update user both mysql and redis");
         userMapper.updateUser(user);
         return user;
+    }
+
+    public int getUserCnt(){
+        return userMapper2.getUserCnt();
     }
 
 }

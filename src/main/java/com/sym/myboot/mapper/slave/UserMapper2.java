@@ -1,22 +1,22 @@
-package com.sym.myboot.service;
+package com.sym.myboot.mapper.slave;
 
 import com.sym.myboot.entity.User;
 
 import java.util.List;
 
-public interface  UserServiceI {
+public interface UserMapper2 {
 
-    List<User> findAllUser(int pageNum, int pageSize);
+    List<User> selectAllUser();
 
     User selectUserByUsername(String username);
 
-    User addUser(User user);
+    int addUser(User user);
 
     void delUserByName(String username);
 
     void updateByUsername(String username);
 
-    User updateUser(User user);
+    void updateUser(User user);
 
     int getUserCnt();
 }
