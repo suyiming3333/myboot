@@ -16,7 +16,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 @MapperScan(basePackages = "com.sym.myboot.mapper.slave",sqlSessionTemplateRef = "slaveSqlSessionTemplate")
 public class DBSlaveConfig {
 

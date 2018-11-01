@@ -56,7 +56,7 @@ public class TestController {
     public int addUser(){
         User user = new User();
         user.setAge(34);
-        user.setUsername("james harden");
+        user.setUsername("james harden 6");
         userService.addUser(user);
         return user.getId();
     }

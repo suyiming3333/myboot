@@ -16,7 +16,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
-@Configuration//mapper 与mapper.xml需要按不同数据源区分开
+//@Configuration//mapper 与mapper.xml需要按不同数据源区分开
 @MapperScan(basePackages = "com.sym.myboot.mapper.master",sqlSessionTemplateRef = "masterSqlSessionTemplate")
 public class DBMasterConfig {
 

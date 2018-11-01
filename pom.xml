@@ -40,6 +40,12 @@
             <!--<artifactId>spring-boot-starter-cache</artifactId>-->
         <!--</dependency>-->
 
+        <!--rabbitmq-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
         <!--spring session -->
         <dependency>
             <groupId>org.springframework.session</groupId>
