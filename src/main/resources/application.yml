@@ -8,14 +8,20 @@ logging:
 
 spring:
   datasource:
+    readSize: 2
     master:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      url: jdbc:mysql://localhost:3306/test3?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       username: root
       password:
     slave:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      username: root
+      password:
+    slave2:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       username: root
       password:
   thymeleaf:
