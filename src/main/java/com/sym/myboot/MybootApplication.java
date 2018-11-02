@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 
+//
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.sym.myboot.mapper.*")
 public class MybootApplication {
