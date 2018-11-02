@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 //
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@MapperScan("com.sym.myboot.mapper.*")
+@MapperScan("com.sym.myboot.mapper")
 public class MybootApplication {
 
 	public static void main(String[] args) {

@@ -1,6 +1,6 @@
 server:
   port: 8181
-  context-path: /myboot
+#  context-path: /myboot
 
 logging:
   path: /F:/myboot_log
@@ -10,7 +10,7 @@ spring:
   datasource:
     master:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       username: root
       password:
     slave:
@@ -36,8 +36,11 @@ spring:
     host: 127.0.0.1
     port: 5672
     username:
-    password: 
-
+    password:
+#  mvc:
+#    view:
+#      suffix: .html
+#      prefix: /
 
 
 

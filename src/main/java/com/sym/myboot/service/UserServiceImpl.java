@@ -1,7 +1,13 @@
 package com.sym.myboot.service;
 
 import com.github.pagehelper.PageHelper;
+import com.sym.myboot.entity.SysPermission;
+import com.sym.myboot.entity.SysRole;
+import com.sym.myboot.entity.SysUser;
 import com.sym.myboot.entity.User;
+import com.sym.myboot.mapper.SysPermissionMapper;
+import com.sym.myboot.mapper.SysRoleMapper;
+import com.sym.myboot.mapper.SysUserMapper;
 import com.sym.myboot.mapper.master.UserMapper;
 import com.sym.myboot.mapper.slave.UserMapper2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +24,15 @@ import java.util.List;
 @CacheConfig(cacheNames = "user")
 @Transactional
 public class UserServiceImpl implements UserServiceI{
+
+    @Autowired
+    private SysUserMapper sysUserMapper;//这里会报错，但是并不会影响
+
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
+
+    @Autowired
+    private SysPermissionMapper sysPermissionMapper;
 
     @Autowired
     private UserMapper userMapper;//这里会报错，但是并不会影响
@@ -72,6 +87,21 @@ public class UserServiceImpl implements UserServiceI{
 
     public int getUserCnt(){
         return userMapper2.getUserCnt();
+    }
+
+    @Override
+    public SysUser findUserByUserName(String username) {
+        return sysUserMapper.findUserByUserName(username);
+    }
+
+    @Override
+    public List<SysRole> getSysRoleByUserName(String username) {
+        return sysRoleMapper.getSysRoleByUserName(username);
+    }
+
+    @Override
+    public List<SysPermission> getSysPermissionByRoleId(int id) {
+        return sysPermissionMapper.getSysPermissionByRoleId(id);
     }
 
 }

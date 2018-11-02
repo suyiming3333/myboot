@@ -5,6 +5,8 @@ import com.sym.myboot.config.MyProperty;
 import com.sym.myboot.dao.UserRepository;
 import com.sym.myboot.entity.User;
 import com.sym.myboot.service.UserServiceI;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,8 @@ public class TestController {
     @Autowired
     private UserRepository userRepository;
 
+    @RequiresRoles("admin1")
+    @RequiresPermissions("userind")
     @RequestMapping("/test")
     public String sayHello(){
         String info = myProperty.getEmail().toString()+myProperty.getPhone().toString();
