@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service(value = "userService")
 @CacheConfig(cacheNames = "user")
@@ -95,12 +96,12 @@ public class UserServiceImpl implements UserServiceI{
     }
 
     @Override
-    public List<SysRole> getSysRoleByUserName(String username) {
+    public List<Map> getSysRoleByUserName(String username) {
         return sysRoleMapper.getSysRoleByUserName(username);
     }
 
     @Override
-    public List<SysPermission> getSysPermissionByRoleId(int id) {
+    public List<Map> getSysPermissionByRoleId(int id) {
         return sysPermissionMapper.getSysPermissionByRoleId(id);
     }
 

@@ -5,14 +5,17 @@ import com.sym.myboot.config.MyProperty;
 import com.sym.myboot.dao.UserRepository;
 import com.sym.myboot.entity.User;
 import com.sym.myboot.service.UserServiceI;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +28,7 @@ import java.util.UUID;
  *RestController 会直接返回字符串 导致无法返回页面
  */
 
-@RestController
+@Controller
 public class TestController {
 
     @Autowired
@@ -37,10 +40,13 @@ public class TestController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequiresRoles("admin1")
-    @RequiresPermissions("userind")
+    //@RequiresRoles("admin")
+    //@RequiresPermissions("userind")
     @RequestMapping("/test")
+    @ResponseBody
     public String sayHello(){
+        //Subject subject = SecurityUtils.getSubject();
+        //subject.hasRole("admin");
         String info = myProperty.getEmail().toString()+myProperty.getPhone().toString();
         System.out.println(info);
 //        User user = userRepository.findAllById(1);

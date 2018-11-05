@@ -16,6 +16,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class MyShiroRealm extends AuthorizingRealm {
@@ -27,14 +28,13 @@ public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        SysUser userInfo = (SysUser) principalCollection.getPrimaryPrincipal();
-        String userName = userInfo.getUsername();
-        List<SysRole> roleList = userServiceImpl.getSysRoleByUserName(userName);
-        for(SysRole sysRole:roleList){
-            authorizationInfo.addRole(sysRole.getRole());
-            List<SysPermission> permissionList = userServiceImpl.getSysPermissionByRoleId(sysRole.getId());
-            for(SysPermission sysPermission:permissionList){
-                authorizationInfo.addStringPermission(sysPermission.getPermission());
+        String userName = (String) principalCollection.getPrimaryPrincipal();
+        List<Map> roleList = userServiceImpl.getSysRoleByUserName(userName);
+        for(Map sysRole:roleList){
+            authorizationInfo.addRole((String) sysRole.get("role"));
+            List<Map> permissionList = userServiceImpl.getSysPermissionByRoleId((Integer) sysRole.get("role_id"));
+            for(Map sysPermission:permissionList){
+                authorizationInfo.addStringPermission((String) sysPermission.get("permission"));
             }
         }
         return authorizationInfo;

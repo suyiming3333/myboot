@@ -6,6 +6,7 @@ import com.sym.myboot.entity.SysUser;
 import com.sym.myboot.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface  UserServiceI {
 
@@ -25,7 +26,7 @@ public interface  UserServiceI {
 
     SysUser findUserByUserName(String username);
 
-    List<SysRole> getSysRoleByUserName(String username);
+    List<Map> getSysRoleByUserName(String username);
 
-    List<SysPermission> getSysPermissionByRoleId(int id);
+    List<Map> getSysPermissionByRoleId(int id);
 }
