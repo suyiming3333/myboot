@@ -1,8 +1,6 @@
 package com.sym.myboot.config.shiro;
 
 
-import com.sym.myboot.entity.SysPermission;
-import com.sym.myboot.entity.SysRole;
 import com.sym.myboot.entity.SysUser;
 import com.sym.myboot.service.UserServiceI;
 import org.apache.shiro.authc.AuthenticationException;
@@ -28,8 +26,8 @@ public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        String userName = (String) principalCollection.getPrimaryPrincipal();
-        List<Map> roleList = userServiceImpl.getSysRoleByUserName(userName);
+        SysUser userInfo = (SysUser) principalCollection.getPrimaryPrincipal();
+        List<Map> roleList = userServiceImpl.getSysRoleByUserName(userInfo.getUsername());
         for(Map sysRole:roleList){
             authorizationInfo.addRole((String) sysRole.get("role"));
             List<Map> permissionList = userServiceImpl.getSysPermissionByRoleId((Integer) sysRole.get("role_id"));
@@ -51,9 +49,9 @@ public class MyShiroRealm extends AuthorizingRealm {
         }
 
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                userInfo.getAccount(),
+                userInfo,
                 userInfo.getPassword(),
-                userInfo.getUsername()
+                getName()
         );
         return authenticationInfo;
     }

@@ -1,6 +1,8 @@
 package com.sym.myboot.entity;
 
-public class SysUser {
+import java.io.Serializable;
+
+public class SysUser implements Serializable{
     private Integer id;
 
     private String username;

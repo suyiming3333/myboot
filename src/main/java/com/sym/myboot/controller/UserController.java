@@ -16,4 +16,9 @@ public class UserController {
     public String indexPage(){
         return "index";
     }
+
+    @RequestMapping("/403")
+    public String noAuthPage(){
+        return "403";
+    }
 }

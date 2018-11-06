@@ -40,7 +40,7 @@ public class TestController {
     @Autowired
     private UserRepository userRepository;
 
-    //@RequiresRoles("admin")
+    @RequiresRoles("admin")
     //@RequiresPermissions("userind")
     @RequestMapping("/test")
     @ResponseBody
